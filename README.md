@@ -32,9 +32,10 @@ Use this section to list all supporting libraries and dependencies, and their ro
 ### Client (Front End)
 
 #### Wireframes
-https://whimsical.com/genuine-engineering-TmDpnEsEN1f6fvibQdVpFk
-<br>
+
 https://www.figma.com/file/0MqLr2RswH2hnsZthH36YH/Genuine-Engineering?node-id=2%3A132
+<br>
+https://app.diagrams.net/
 
 
 
@@ -77,7 +78,8 @@ src
 
 #### Component Tree
 
-> Use this section to include a link to your component tree.
+https://whimsical.com/genuine-engineering-TmDpnEsEN1f6fvibQdVpFk
+
 
 #### Time Estimates
 
