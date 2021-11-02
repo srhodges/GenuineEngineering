@@ -21,10 +21,10 @@
 > Use this section to list all supporting libraries and dependencies, and their role in the project. 
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|  React        | _The front end will be built in react._ |
-|  React Router | _Will provide all routes and links to different pages._ |
-|  Axios        | _Used in making CRUD requests._ |
-|  Ruby On Rails| _Managing the back-end with seeded data, controllers, routes, tables, etc._ |
+|  React        | The front end will be built in react |
+|  React Router | Will provide all routes and links to different pages|
+|  Axios        | Used in making CRUD requests|
+|  Ruby On Rails| Managing the back-end with seeded data, controllers, routes, tables, etc |
 
 <br>
 
