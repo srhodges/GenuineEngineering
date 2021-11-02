@@ -18,7 +18,8 @@
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. 
+Use this section to list all supporting libraries and dependencies, and their role in the project. 
+
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
 |  React        | The front end will be built in react |
