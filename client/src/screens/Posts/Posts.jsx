@@ -4,7 +4,7 @@ export default function Posts(props) {
   const { posts, handlePostDelete } = props;
   return (
     <div>
-      <h3>Posts</h3>
+      <h3>Portfolio</h3>
       {posts.map((post) => (
         <div key={post.id}>
           <Link to={`/posts/${post.id}`}>

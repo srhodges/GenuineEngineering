@@ -1,7 +1,7 @@
 import './Sidebar.css'
 import React from 'react'
 
-// import avatar from '../assets/avatar.svg'
+import avatar from '../assets/img/avatar.jpg'
 // import resume from '../assets/resume.pdf'
 
 const Sidebar = () => {
@@ -10,7 +10,7 @@ const Sidebar = () => {
   }
   return (
       <div className="sidebar">
-          {/* <img src={avatar} alt="avatar" className="sidebar_avatar" /> */}
+          <img src={avatar} alt="avatar" className="sidebar_avatar" />
           <div className="sidebar_name">Stephanie <span>Hodges</span> </div>
           <div className="sidebar_title">Software Developer</div>
           <div className="sidebar_contact">

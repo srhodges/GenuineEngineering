@@ -5,12 +5,12 @@
   text-align: center;
 }
 
-/* .sidebar_avatar {
-  height: 110px;
-  width: 120px;
+.sidebar_avatar {
+  height: 225px;
+  width: 225px;
   object-fit: contain;
-  border-radius: 30px;
-} */
+  border-radius: 50%;
+}
 
 .sidebar_name {
   /* font-family: "Kaushan Script"; */
