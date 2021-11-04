@@ -1,7 +1,7 @@
 import './Layout.css'
 import Sidebar from './Sidebar';
 import Nav from './Nav';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default function Layout(props) {
   const { children, currentUser, handleLogout } = props;
@@ -12,8 +12,9 @@ export default function Layout(props) {
         <h1>Genuine Engineering</h1>
       </header>
       <Nav />
-      {currentUser ? (
-          <div>
+      
+      {/* {currentUser ? (
+      <div>
             <p>{currentUser.username}</p>
             <button onClick={handleLogout}>Logout</button>
           </div>
@@ -27,7 +28,8 @@ export default function Layout(props) {
             <Link to='/collaborators'>Collaborators</Link>
             <Link to='/about'>Learn More</Link>
           </div>
-        )}
+      )} */}
+      
       {children}
       <aside className="side">
           <Sidebar/>

@@ -1,6 +1,7 @@
 import './Nav.css'
 
-const Nav = () => {
+const Nav = (props) => {
+  
   
 
     return (
@@ -8,21 +9,22 @@ const Nav = () => {
         <nav>
   <ul>
     <li className="dropdown">
-        <a href="#">Portfolio</a>
+        <a href="/portfolio">Portfolio</a>
     </li>
     <li className="dropdown">
-        <a to="/collaborate">Collaborate</a>
+        <a href="/collaborate">Collaborate</a>
           <div className="dropdown_menu">
-        <a to="/posts">Partner with GE</a>
+        <a href="/portfolio">Partner with GE</a>
       </div>
     </li>
     <li className="dropdown">
-      <a href="#">About GE</a>
+      <a href="/more">About GE</a>
           <div className="dropdown_menu">
-      <a href="#">Contact</a>
+      <a href="/contact">Contact</a>
       </div>
     </li>
-  </ul>     
+          </ul>
+          
         </nav>
             </div>
     )

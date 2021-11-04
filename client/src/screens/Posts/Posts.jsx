@@ -4,7 +4,7 @@ export default function Posts(props) {
   const { posts, handlePostDelete } = props;
   return (
     <div>
-      <h3>Portfolio</h3>
+      <h3>This </h3>
       {posts.map((post) => (
         <div key={post.id}>
           <Link to={`/posts/${post.id}`}>
@@ -16,7 +16,7 @@ export default function Posts(props) {
           <button onClick={() => handlePostDelete(post.id)}>delete</button>
         </div>
       ))}
-      <Link to='/posts/new'>
+      <Link to='/posts/clients'>
         <button>create</button>
       </Link>
     </div>

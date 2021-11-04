@@ -1,0 +1,21 @@
+.post-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+  .post-cards {
+    width: 90vw;
+    padding: 20px;
+    margin: 0px;
+  }
+  .cards {
+    margin: 0 -20px;
+  }
+}

@@ -9,7 +9,7 @@ import PostDetail from './screens/PostDetail/PostDetail';
 import PostCreate from './screens/PostCreate/PostCreate'
 import Posts from './screens/Posts/Posts';
 import Software from './screens/Software/Software';
-import Register from './screens/Register/Register';
+// import Register from './screens/Register/Register';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import Login from './screens/Login/Login';
 import Home from './screens/Home/Home';
@@ -89,7 +89,10 @@ function App() {
       <Layout currentUser={currentUser} handleLogout={handleLogout}>
         <Switch>
         <Route exact path="/">
-          {/* <Home handleRegister={handleRegister} currentUser={currentUser}/> */}
+          <Home handleRegister={handleRegister} currentUser={currentUser}/>
+          </Route>
+          <Route exact path="/register">
+          <Home handleRegister={handleRegister} currentUser={currentUser}/>
         </Route>
         <Route exact path="/login">
           <Login handleLogin={handleLogin} />

@@ -1,7 +1,8 @@
+import './Register.css'
 import { useState } from 'react';
-import { registerUser } from '../../services/auth';
 import { useHistory } from 'react-router';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 export default function Register(props) {
   const [formData, setFormData] = useState({
@@ -21,38 +22,18 @@ export default function Register(props) {
       [name]: value,
     }));
   };
-
-
-
-  const onRegister = async (event) => {
-    event.preventDefault()
-    const { setCurrentUser } = props
-    try {
-      const currentUser = await registerUser(formData)
-      setCurrentUser(currentUser)
-      history.push('/portfolio')
-    } catch (error) {
-      console.error(error)
-      setFormData({
-        username: '',
-        email: '',
-        password: '',
-        passwordConfirmation: '',
-        isError: true,
-        errorMsg: 'Invalid Login',
-      })
-    }
-  }
-
-
+  
+  
   return (
+    <div className='form-container'>
     <form
       onSubmit={(e) => {
         e.preventDefault();
         handleRegister(formData);
+        history.push('/portfolio')
       }}
     >
-      <h3>Register</h3>
+      {/* <h3>Register</h3> */}
       <label>
         Username:
         <input
@@ -79,6 +60,10 @@ export default function Register(props) {
       </label>
       <br />
       <button>Submit</button>
-    </form>
+      </form>
+      <p>
+      Already Have An Account? Sign In <Link to="./login">Here</Link>
+      </p>
+      </div>
   );
 }
