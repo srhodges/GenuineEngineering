@@ -2,15 +2,17 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import { deletePost, getAllPosts, postPost, putPost } from '../services/posts';
-import { getAllSoftware } from '../services/software';
-import Posts from '../screens/Posts/Posts';
-import PostEdit from '../screens/PostEdit/PostEdit';
-import PostDetail from '../screens/PostDetail/PostDetail';
-import Software from '../screens/Software/Software';
+import { deletePost, getAllPosts, postPost, putPost } from './services/posts';
+import { getAllSoftware } from './services/software';
+import PostEdit from './screens/PostEdit/PostEdit';
+import PostDetail from './screens/PostDetail/PostDetail';
+import PostCreate from './screens/PostCreate/PostCreate'
+import Posts from './screens/Posts/Posts';
+import Software from './screens/Software/Software';
 import Register from './screens/Register/Register';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import Login from './screens/Login/Login';
+import Home from './screens/Home/Home';
 import Layout from './layouts/Layout';
 
 function App() {
@@ -87,7 +89,7 @@ function App() {
       <Layout currentUser={currentUser} handleLogout={handleLogout}>
         <Switch>
         <Route exact path="/">
-          <Home handleRegister={handleRegister} currentUser={currentUser}/>
+          {/* <Home handleRegister={handleRegister} currentUser={currentUser}/> */}
         </Route>
         <Route exact path="/login">
           <Login handleLogin={handleLogin} />

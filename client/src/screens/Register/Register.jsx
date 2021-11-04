@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { registerUser } from '../../services/auth';
+import { useHistory } from 'react-router';
+// import { Link } from 'react-router-dom';
 
 export default function Register(props) {
   const [formData, setFormData] = useState({
@@ -6,6 +9,8 @@ export default function Register(props) {
     email: '',
     password: '',
   });
+
+  const history = useHistory()
   const { username, email, password } = formData;
   const { handleRegister } = props;
 
@@ -16,6 +21,29 @@ export default function Register(props) {
       [name]: value,
     }));
   };
+
+
+
+  const onRegister = async (event) => {
+    event.preventDefault()
+    const { setCurrentUser } = props
+    try {
+      const currentUser = await registerUser(formData)
+      setCurrentUser(currentUser)
+      history.push('/portfolio')
+    } catch (error) {
+      console.error(error)
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+        isError: true,
+        errorMsg: 'Invalid Login',
+      })
+    }
+  }
+
 
   return (
     <form

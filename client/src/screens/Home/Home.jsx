@@ -1,23 +1,31 @@
-import './Home.css'
-import Footer from '../../components/Footer/Footer'
-import Register from '../Register/Register'
-import Login from '../Login/Login'
+// import './Home.css'
+// import { registerUser } from '../../services/auth';
+// import Register from '../Register/Register'
+// import { useState } from 'react';
+// import { useHistory } from 'react-router-dom';
 
 
-const Home = (props) => {
+// const Home = (props) => {
+//   const history = useHistory()
+//   const [currentUser, setCurrentUser] = useState(null);
+//   const {setUser} = props
+//   props.setIsUser(false)
 
-  const {setUser} = props
-  props.setIsUser(false)
+//   const handleRegister = async (formData) => {
+//     const userData = await registerUser(formData);
+//     setCurrentUser(userData);
+//     history.push('/');
+//   };
+
   
-  return (
+//   return (
     
-    <div className="home-container">
-        <Login handleLogin={handleLogin} />
-        <Register handleRegister={handleRegister} />  
-      <Footer/>
-    </div>
+//     <div className="home-container">
+//         <Register handleRegister={handleRegister} />  
+//       {/* <Footer/> */}
+//     </div>
   
-  )
-}
+//   )
+// }
 
-export default Home
+// export default Home
