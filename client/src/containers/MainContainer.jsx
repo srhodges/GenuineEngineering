@@ -62,7 +62,7 @@ export default function MainContainer() {
       <Route path='/posts/:id'>
         <PostDetail software={software} />
       </Route>
-      <Route path='/posts'>
+      <Route >
         <Posts posts={posts} handlePostDelete={handlePostDelete} />
       </Route>
       <Route path='/software'>
