@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Software.destroy_all
+Post.destroy_all
+User.destroy_all
 
 
 
-
-@admin = User.create!(username: 'steph', email: 'steph@email.com', password: '123456')
+@admin = User.create!(username: 'steph', email: 'steph@stephemail.com', password: 'steph92')
 
 puts "#{User.count} users created"
 

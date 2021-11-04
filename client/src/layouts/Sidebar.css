@@ -1,0 +1,55 @@
+.sidebar {
+  background-color: #028090;
+  height: 100%;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+/* .sidebar_avatar {
+  height: 110px;
+  width: 120px;
+  object-fit: contain;
+  border-radius: 30px;
+} */
+
+.sidebar_name {
+  /* font-family: "Kaushan Script"; */
+  margin: 20px 0;
+  font-size: 1.7rem;
+}
+
+/* .sidebar_name > span {
+  color: #FFFFFF;
+} */
+
+.sidebar_item {
+  margin-bottom: 6px;
+  padding-top: 6px;
+  height: 40px;
+  font-size: 1.05rem;
+  /* border-radius: 30px; */
+}
+
+.sidebar_title {
+  background-color: #f1f1f1;
+  border-radius: 30px;
+}
+
+.sidebar_contact {
+  background-color: #dbdddf;
+  padding: 2px 0;
+  margin: 20px -15px;
+}
+
+.sidebar_email {
+  /* background-image: linear-gradient(to right bottom, #028090, #00a896); */
+  border-radius: 30px;
+  color: #fff;
+  margin: 15px 25px 0px;
+  cursor: pointer;
+  transition: all 3s linear;
+}
+
+.sidebar_email:hover {
+  transform: scale(1.1);
+}
