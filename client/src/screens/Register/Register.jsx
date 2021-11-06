@@ -13,7 +13,7 @@ export default function Register(props) {
 
   const history = useHistory()
   const { username, email, password } = formData;
-  const { handleRegister } = props;
+  const { handleRegister, currentUser } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,10 +27,10 @@ export default function Register(props) {
   return (
     <div className='form-container'>
     <form
-      onSubmit={(e) => {
+        onSubmit={(e) => {
         e.preventDefault();
-        handleRegister(formData);
-        history.push('/portfolio')
+          handleRegister(formData);
+        
       }}
     >
       {/* <h3>Register</h3> */}

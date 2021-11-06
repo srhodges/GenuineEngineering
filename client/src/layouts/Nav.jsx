@@ -12,9 +12,9 @@ const Nav = (props) => {
         <a href="/portfolio">Portfolio</a>
     </li>
     <li className="dropdown">
-        <a href="/collaborate">Collaborate</a>
+        <a href="/post/new">Collaborate</a>
           <div className="dropdown_menu">
-        <a href="/portfolio">Partner with GE</a>
+        <a href="/post/new">Partner with GE</a>
       </div>
     </li>
     <li className="dropdown">

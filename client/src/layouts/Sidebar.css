@@ -1,6 +1,5 @@
 .sidebar {
   background-color: #028090;
-  height: 100%;
   padding: 25px 15px;
   text-align: center;
 }
@@ -36,7 +35,7 @@
 }
 
 .sidebar_contact {
-  background-color: #dbdddf;
+  /* background-color: #dbdddf; */
   padding: 2px 0;
   margin: 20px -15px;
 }
@@ -51,5 +50,8 @@
 }
 
 .sidebar_email:hover {
-  transform: scale(1.1);
+  transform: scale(2);
+}
+.resume {
+  text-align: start;
 }

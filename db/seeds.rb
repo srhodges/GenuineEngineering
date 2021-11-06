@@ -17,7 +17,7 @@ User.destroy_all
 puts "#{User.count} users created"
 
 10.times do
-  Post.create!(name: Faker::App.name, user: @admin)
+  Post.create!(name: Faker::App.name, user: @admin, proposal:"proposal info")
 end
 
 puts "#{Post.count} post created"
@@ -29,6 +29,7 @@ puts "#{Post.count} post created"
 @python = Software.create!(name: 'python')
 
 puts "#{Software.count} software updated"
+
 
 Post.all.each do |post|
   rand(1..5).times do

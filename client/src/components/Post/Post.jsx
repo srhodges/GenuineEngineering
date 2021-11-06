@@ -6,9 +6,9 @@ const Post = (props) => {
     return (
         <>
             <Link className="post" to={`/portfolio/${props.id}`}>
-                <div className="post-title">{props.title}</div>
-                <div className="post-author">{props.author}</div>
-                <div className="post-content">{props.content}</div>
+                <div className="post-title">{props.name}</div>
+                <div className="post-author">{props.proposal}</div>
+                <div className="post-content">{props.softwares}</div>
             </Link>
         </>
     )

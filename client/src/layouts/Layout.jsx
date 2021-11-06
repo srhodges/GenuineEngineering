@@ -12,30 +12,17 @@ export default function Layout(props) {
         <h1>Genuine Engineering</h1>
       </header>
       <Nav />
-      
-      {/* {currentUser ? (
-      <div>
-            <p>{currentUser.username}</p>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        ) : (
-          <Link to='/login'>Login/Register</Link>
-          )}
-        <hr />
-        {currentUser && (
-          <div>
-            <Link to='/posts'>Portfolio</Link>
-            <Link to='/collaborators'>Collaborators</Link>
-            <Link to='/about'>Learn More</Link>
-          </div>
-      )} */}
-      
-      {children}
-      <aside className="side">
+      {/* <div className="sidebar-container"> */}
+      <aside className="sidebar">
           <Sidebar/>
       </aside>
+      <div className="children-container">
+        <div className="children">
+          {children}
+        </div>
+      </div>
       <footer className="footer">
-        {/* <Footer/> */}
+        <h3>some catchy tag line</h3>
       </footer>
     </div>
   );

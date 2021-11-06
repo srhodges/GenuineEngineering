@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
-  before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy, :add_software]
   before_action :set_user_post, only: [:update, :destroy]
 
   # GET /posts
   def index
     @posts = Post.all
 
-    render json: @posts
+    render json: @posts, include: :softwares
   end
 
   # GET /posts/1
@@ -42,11 +42,14 @@ class PostsController < ApplicationController
 
   def add_software
     @software = Software.find(params[:software_id])
-    @post = Post.find(params[:id])
-
-    @post.softwares << @software
-
-    render json: @post, include: :softwares
+    @post = Post.new(post_params)
+    @post.user = @current_user
+    if @post.save
+      @post.softwares << @software
+      render json: @post, status: :created, location: @post
+    else
+      render json: @post.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -62,6 +65,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:name, :user_id)
+      params.require(:post).permit(:name, :proposal, :user_id)
     end
 end

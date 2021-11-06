@@ -6,5 +6,6 @@ class SoftwaresController < ApplicationController
 
     render json: @softwares
   end
+end
 
   

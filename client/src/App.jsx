@@ -2,7 +2,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import { deletePost, getAllPosts, postPost, putPost } from './services/posts';
+import { deletePost, getAllPosts, postPost, putPost, addSoftwareToPost } from './services/posts';
 import { getAllSoftware } from './services/software';
 import PostEdit from './screens/PostEdit/PostEdit';
 import PostDetail from './screens/PostDetail/PostDetail';
@@ -48,13 +48,15 @@ function App() {
   const handleLogin = async (formData) => {
     const userData = await loginUser(formData);
     setCurrentUser(userData);
-    history.push('/');
+    history.push('/portfolio');
   };
   
   const handleRegister = async (formData) => {
     const userData = await registerUser(formData);
     setCurrentUser(userData);
-    history.push('/');
+    if (userData) {   
+      history.push('/portfolio');
+    }
   };
   
   const handleLogout = () => {
@@ -63,10 +65,10 @@ function App() {
     removeToken();
   };
   
-    const handlePostCreate = async (formData) => {
-      const newPost = await postPost(formData);
+    const handlePostCreate = async (formData, softwareId) => {
+      const newPost = await postPost(formData, softwareId);
       setPosts((prevState) => [...prevState, newPost]);
-      history.push('/posts');
+      history.push('/portfolio');
     };
   
     const handlePostUpdate = async (id, formData) => {
@@ -96,17 +98,20 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login handleLogin={handleLogin} />
-        </Route>
-      <Route path='/portfolio/new'>
-        <PostCreate handlePostCreate={handlePostCreate} />
+          </Route>
+          <Route path='/portfolio'>
+        <Posts posts={posts} handlePostUpdate={handlePostUpdate} handlePostDelete={handlePostDelete} currentUser={currentUser}  />
       </Route>
-        <Route path='/portfolio/:id/edit'>
-        <PostEdit posts={posts} handlePostUpdate={handlePostUpdate} />
+      <Route path='/post/new'>
+        <PostCreate handlePostCreate={handlePostCreate} software={software}/>
       </Route>
-      <Route path='/portfolio/:id'>
+        <Route path='/post/:id/edit'>
+        <PostEdit posts={posts} handlePostUpdate={handlePostUpdate} addSoftwareToPost={addSoftwareToPost} software={software} />
+      </Route>
+      <Route path='/post/:id'>
         <PostDetail software={software} />
       </Route>
-      <Route  path='/portfolio/:id' >
+      <Route  path='/post/:id' >
         <Posts posts={posts} handlePostDelete={handlePostDelete} />
       </Route>
       <Route path='/software'>

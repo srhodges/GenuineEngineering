@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getOnePost, addSoftwareToPost } from '../../services/posts';
+import { useParams, Link } from 'react-router-dom';
+import { getOnePost } from '../../services/posts';
+// import { useHistory } from 'react-router-dom';
 
 export default function PostDetail(props) {
   const [postItem, setPostItem] = useState(null);
-  const [software, setSoftware] = useState('');
+  const [ setSoftware ] = useState('');
   const { id } = useParams();
-  const { softwares } = props;
+  const {post, softwares, posts, handlePostDelete, currentUser } = props;
+
+
 
   useEffect(() => {
     const fetchPostItem = async () => {
@@ -21,38 +24,34 @@ export default function PostDetail(props) {
     setSoftware(value);
   };
 
-  // Our handle submit for adding the flavor to our food
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const postItem = await addSoftwareToPost(software, id);
-    setPostItem(postItem);
-  };
+  // Our handle submit for adding the software to our post
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const postItem = await addSoftwareToPost(software, id);
+  //   setPostItem(postItem);
+  // };
 
-  return (
-    <div>
-      <h3>{postItem?.name}</h3>
-      {postItem?.software.map((software) => (
-        <p key={software.id}>{software.name}</p>
-      ))}
-      {/* below is our for for the flavor drop down */}
-      <form onSubmit={handleSubmit}>
-        <select onChange={handleChange} defaultValue='default'>
-          {/* we can set a default value to tell people to select a flavor*/}
-          {/* the "defaultValue" on the <select> tag needs to match the "value" on our default <option> tag */}
-          {/* we also add the "disabled" in the <option> to prevent users from selecting it*/}
-          <option disabled value='default'>
-            -- Software Type --
-          </option>
-          {/* now we loop over all flavors and return an <option> tag for each */}
+    return (
+      <div className='details-page'>
+        <div className="details-container">
 
-          {softwares.map((software) => (
-            // we track the flavor's id as the "value" which will get added to state onChange
-            // the flavor's name goes between the open and close tag which is what the user sees
-            <option value={software.id}>{software.name}</option>
-          ))}
-        </select>
-        <button>Add</button>
-      </form>
-    </div>
-  );
+        <div className='details-name-container'>
+          {/* <div className='post-name'>{postItem.name}</div> */}
+          {/* <div className="outer-detail-container"><textarea className='detail-content'>{postItem.proposal}</textarea></div> */}
+          {/* <div className='software-type'>{postItem.softwares}</div> */}
+          <div className='details-button-container'>
+          { currentUser && currentUser.id === post.user_id ? 
+              <>
+              <Link to={`/post/${post.id}/edit`}>
+            <button>edit</button>
+            </Link>
+          <button onClick={() => handlePostDelete(post.id)}>delete</button>
+        </> : <></>
+        }  
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  )
 }
