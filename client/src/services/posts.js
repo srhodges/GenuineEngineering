@@ -10,8 +10,8 @@ export const getOnePost = async (id) => {
   return resp.data;
 };
 
-export const postPost = async (postData, softwareId) => {
-  const resp = await api.post(`/softwares/${softwareId}/posts`, { post: postData });
+export const postPost = async (postData) => {
+  const resp = await api.post(`/posts`, { post: postData });
   return resp.data;
 };
 

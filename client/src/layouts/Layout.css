@@ -5,7 +5,7 @@
   grid-template-areas:
     "sidebar header header header"
     "sidebar nav nav nav"
-    "sidebar . children ."
+    "sidebar . children-container ."
     "sidebar footer footer footer";
   grid-gap: 0.2rem;
   font-weight: 800;
@@ -27,7 +27,7 @@
   grid-area: sidebar;
 }
 .children-container {
-  grid-area: children;
+  grid-area: children-container;
   display: flex;
   flex-direction: row;
 }
@@ -48,9 +48,9 @@
       "header"
       "nav"
       "sidebar"
-      "content1"
+      "."
       "children-container"
-      "content3"
+      "."
       "footer";
   }
 }

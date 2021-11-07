@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import CardMap from '../../components/CardMap/CardMap';
 
 
 export default function Posts(props) {
@@ -7,8 +8,17 @@ export default function Posts(props) {
   const { handlePostDelete, currentUser } = props
   
   return (
-    <div className="post-card">   
-        {posts.map((post) => (
+    <div className="post-card-main">
+      <CardMap
+      currentUser={currentUser}  
+      id={posts.id}
+      name={posts.name}
+      proposal={posts.proposal}
+      softwares={posts.softwares}
+      // key={index}
+      />
+      
+        {/* {posts.map((post) => (
         <div key={post.id}>
           <Link to={`/post/${post.id}`}>
               <p>{post.name}</p>
@@ -16,7 +26,6 @@ export default function Posts(props) {
               {post.softwares?.map(software => (
                 <p>{software.name}</p>
               ))}
-
             </Link>
             { currentUser && currentUser.id === post.user_id ? 
               <>
@@ -29,7 +38,7 @@ export default function Posts(props) {
         </div>
       ))} 
       <Link to='/portfolio'>
-      </Link> 
+      </Link>  */}
     </div>
   );
 }

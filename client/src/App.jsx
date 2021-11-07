@@ -65,8 +65,10 @@ function App() {
     removeToken();
   };
   
-    const handlePostCreate = async (formData, softwareId) => {
-      const newPost = await postPost(formData, softwareId);
+  const handlePostCreate = async (formData) => {
+      console.log(formData)
+      const newPost = await postPost(formData);
+      console.log(newPost)
       setPosts((prevState) => [...prevState, newPost]);
       history.push('/portfolio');
     };

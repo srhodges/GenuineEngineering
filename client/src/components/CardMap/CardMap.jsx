@@ -1,34 +1,46 @@
 import { useState, useEffect } from 'react'
 import './CardMap.css'
 import Card from '../Card/Card'
-import { getPosts } from '../../services/posts'
+import { getAllPosts } from '../../services/posts'
+import { Link } from 'react-router-dom'
 
-const CardMap = () => {
+const CardMap = (props) => {
   const [posts, setPosts] = useState([])
+  const { handlePostDelete, currentUser } = props
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const allPosts = await getPosts()
-      setPosts(allPosts)
-    }
-    fetchPosts()
-  }, [])
+      const postList = await getAllPosts();
+      console.log("list",postList)
+      setPosts(postList);
+    };
+    fetchPosts();
+  }, []);
 
   const CARDS = posts
     .reverse()
-    .map((post, index) =>
-      index < 8 ? (
-        <Card
-        _id={post._id}
-          title={post.title}
-          author={post.author}
-          key={index}
-        />
-      ) : null
-    )
-
-  return (
-    <div className='post-cards'>
+    .map((post) => (
+      <div key={post.id}>
+        <Link to={`/post/${post.id}`}>
+          <p>{post.name}</p>
+          <p>{post.proposal}</p>
+          {post.softwares?.map(software => (
+            <p>{software.name}</p>
+          ))}
+        </Link>
+        {currentUser && currentUser.id === post.user_id ?
+          <>
+            <Link to={`/post/${post.id}/edit`}>
+              <button>edit</button>
+            </Link>
+            <button onClick={() => handlePostDelete(post.id)}>delete</button>
+          </> : <></>
+        }
+      </div>
+    ))
+    
+    return (
+      <div className='post-cards'>
       <div className='cards'>{CARDS}</div>
     </div>
   )

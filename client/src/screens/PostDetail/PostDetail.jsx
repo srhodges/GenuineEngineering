@@ -14,6 +14,7 @@ export default function PostDetail(props) {
   useEffect(() => {
     const fetchPostItem = async () => {
       const postData = await getOnePost(id);
+      console.log(postData);
       setPostItem(postData);
     };
     fetchPostItem();
@@ -34,11 +35,17 @@ export default function PostDetail(props) {
     return (
       <div className='details-page'>
         <div className="details-container">
-
+{console.log(postItem?.name)}
         <div className='details-name-container'>
-          {/* <div className='post-name'>{postItem.name}</div> */}
-          {/* <div className="outer-detail-container"><textarea className='detail-content'>{postItem.proposal}</textarea></div> */}
-          {/* <div className='software-type'>{postItem.softwares}</div> */}
+          <div className='post-name'>{postItem?.name}</div>
+          {/* <div className="outer-detail-container"><textarea className='detail-content'>{postItem?.proposal}</textarea></div> */}
+            <div className='software-type'>
+              
+              {postItem?.softwares.map(software => (
+                <p>
+                  {software.name}
+                </p>
+              ) ) }</div>
           <div className='details-button-container'>
           { currentUser && currentUser.id === post.user_id ? 
               <>
