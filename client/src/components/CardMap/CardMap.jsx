@@ -1,29 +1,16 @@
-import { useState, useEffect } from 'react'
 import './CardMap.css'
-import Card from '../Card/Card'
-import { getAllPosts } from '../../services/posts'
 import { Link } from 'react-router-dom'
 
 const CardMap = (props) => {
-  const [posts, setPosts] = useState([])
-  const { handlePostDelete, currentUser } = props
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const postList = await getAllPosts();
-      console.log("list",postList)
-      setPosts(postList);
-    };
-    fetchPosts();
-  }, []);
+  const { handlePostDelete, currentUser, posts } = props
 
   const CARDS = posts
     .reverse()
     .map((post) => (
-      <div key={post.id}>
+      <div className="card" key={post.id}>
         <Link to={`/post/${post.id}`}>
-          <p>{post.name}</p>
-          <p>{post.proposal}</p>
+          <h1>{post.name}</h1>
+          <h2>{post.proposal}</h2>
           {post.softwares?.map(software => (
             <p>{software.name}</p>
           ))}
@@ -40,8 +27,8 @@ const CardMap = (props) => {
     ))
     
     return (
-      <div className='post-cards'>
-      <div className='cards'>{CARDS}</div>
+      <div className='post-card'>
+      {CARDS}
     </div>
   )
 }

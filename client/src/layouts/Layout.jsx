@@ -1,10 +1,10 @@
 import './Layout.css'
 import Sidebar from './Sidebar';
 import Nav from './Nav';
-// import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 export default function Layout(props) {
-  const { children, currentUser, handleLogout } = props;
+  const { children } = props;
 
   return (
     <div className="grid-container">
@@ -12,18 +12,13 @@ export default function Layout(props) {
         <h1>Genuine Engineering</h1>
       </header>
       <Nav />
-      {/* <div className="sidebar-container"> */}
       <aside className="sidebar">
           <Sidebar/>
       </aside>
       <div className="children-container">
-        <div className="children">
           {children}
-        </div>
       </div>
-      <footer className="footer">
-        <h3>some catchy tag line</h3>
-      </footer>
+      <Footer />
     </div>
   );
 }

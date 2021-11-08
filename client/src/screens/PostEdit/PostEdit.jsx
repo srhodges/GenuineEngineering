@@ -6,6 +6,7 @@ export default function PostEdit(props) {
   const [formData, setFormData] = useState({
     name: '',
     proposal: '',
+    softwares: [],
   });
   const { name, proposal} = formData;
   const { id } = useParams();
@@ -15,7 +16,8 @@ export default function PostEdit(props) {
     const prefillFormData = () => {
       const postItem = posts.find(post => post.id === Number(id))
       setFormData({
-        name: postItem.name
+        name: postItem.name,
+        proposal: postItem.proposal
       })
     };
     if (posts.length) {
@@ -24,12 +26,22 @@ export default function PostEdit(props) {
   }, [posts, id]);
 
   const handleChange = (e) => {
-    const { name ,value } = e.target;
+    const { name, value } = e.target;
     setFormData({...formData,
-     [name]: value,
-  
+      [name]: value,
+      softwares: [...selectedSoftwares, value]
     });
   };
+
+  const handleCheck = (e) => {
+    if (e.target.checked) {
+      setSelectedSoftwares((prevSoftware) => [...prevSoftware, e.target.value])
+    } else {
+      const i = selectedSoftwares.indexOf(e.target.value)
+      selectedSoftwares.splice(i, 1)
+      setSelectedSoftwares([...selectedSoftwares])
+    } 
+  }
 
   return (
     <div>
@@ -42,17 +54,22 @@ export default function PostEdit(props) {
       <h1>Edit Proposal</h1>
       <label>
         Name:
-        <input type='text' value={name} onChange={handleChange} />
       </label>
+        <input type='text' value={name} name="name" onChange={handleChange} />
       <br />
       <label>
         Proposal:
-        <input type='text' value={proposal} onChange={handleChange} />
         </label>
+        <input type='text' value={proposal} name="proposal" onChange={handleChange} />
+        
         {software.map((software) => (
             <label>
               {software.name}
-              <input onChange={ (e) => setSelectedSoftwares((prevSoftware) => [...prevSoftware, e.target.value])} type="checkbox" value={software.id} name={software.name}/>
+              <input onClick={handleCheck} onChange={handleChange}
+                type="checkbox"
+                value={software.id}
+                name={software.name} />
+              
             </label>
           ))}
       <button>Submit</button>

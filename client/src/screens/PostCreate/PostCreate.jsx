@@ -1,3 +1,4 @@
+import './PostCreate.css'
 import { useState } from 'react';
 
 export default function PostCreate(props) {
@@ -7,19 +8,18 @@ export default function PostCreate(props) {
     proposal: '',
     softwares: [],
   });
-  const { name, proposal, softwares } = formData;
+  const { name, proposal } = formData;
   const { handlePostCreate, software } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({...formData,
       [name]: value,
-      softwares: [...selectedSoftwares]
+      softwares: [...selectedSoftwares, value]
     });
   };
 
   const handleCheck = (e) => {
-    // console.log(e.target.checked);
     if (e.target.checked) {
       setSelectedSoftwares((prevSoftware) => [...prevSoftware, e.target.value])
     } else {
@@ -30,7 +30,6 @@ export default function PostCreate(props) {
   }
 
   return (
-    <div className="create-container">
       <div className="create-form-container">
     <form
       onSubmit={(e) => {
@@ -48,15 +47,13 @@ export default function PostCreate(props) {
         Proposal:
         <textarea type='text' name="proposal" value={proposal} onChange={handleChange} />
       </label>
-      <br />
+        <br />
+        
 
           {software.map((software) => (
             <label>
               {software.name}
-              {/* <input onChange={(e) => setSelectedSoftwares((prevSoftware) => [...prevSoftware, e.target.value])} */}
               <input onClick={handleCheck} onChange={handleChange}
-              // (e) => handleChange(e)
-              
                 type="checkbox"
                 value={software.id}
                 name={software.name} />
@@ -67,6 +64,5 @@ export default function PostCreate(props) {
       <button>Submit</button>
         </form>
         </div>
-      </div>
   );
 }

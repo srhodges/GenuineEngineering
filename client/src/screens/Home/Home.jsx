@@ -8,9 +8,8 @@ const Home = (props) => {
   
   return (
     
-    <div className="home-container">
+    <div className="children-container">
         <Register handleRegister={handleRegister} />  
-      {/* <Footer/> */}
     </div>
   
   )

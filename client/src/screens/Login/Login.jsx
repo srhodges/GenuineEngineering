@@ -26,7 +26,8 @@ export default function Login(props) {
         handleLogin(formData);
       }}
     >
-      <h3>Login</h3>
+        <h2>Login</h2>
+        <br/>
       <label>
         Username:
         <input

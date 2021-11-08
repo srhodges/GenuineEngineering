@@ -8,18 +8,19 @@ import PostEdit from './screens/PostEdit/PostEdit';
 import PostDetail from './screens/PostDetail/PostDetail';
 import PostCreate from './screens/PostCreate/PostCreate'
 import Posts from './screens/Posts/Posts';
-import Software from './screens/Software/Software';
-// import Register from './screens/Register/Register';
+import Register from './screens/Register/Register';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import Login from './screens/Login/Login';
-import Home from './screens/Home/Home';
 import Layout from './layouts/Layout';
+import SignOut from './screens/SignOut/SignOut';
+import About from './screens/About/About';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [software, setSoftware] = useState([]);
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState(null);
+  const [toggle, setToggle] = useState(false);
   
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,7 +28,7 @@ function App() {
       setPosts(postList);
     };
     fetchPosts();
-  }, []);
+  }, [toggle]);
   
   useEffect(() => {
     const fetchSoftware = async () => {
@@ -35,7 +36,7 @@ function App() {
       setSoftware(softwareList);
     };
     fetchSoftware();
-  }, []);
+  }, [toggle]);
 
   useEffect(() => {
     const handleVerify = async () => {
@@ -86,6 +87,7 @@ function App() {
     const handlePostDelete = async (id) => {
       await deletePost(id);
       setPosts((prevState) => prevState.filter((post) => post.id !== id));
+      setToggle(prevToggle => !prevToggle)
     };
 
   return (
@@ -93,11 +95,8 @@ function App() {
       <Layout currentUser={currentUser} handleLogout={handleLogout}>
         <Switch>
         <Route exact path="/">
-          <Home handleRegister={handleRegister} currentUser={currentUser}/>
+          <Register handleRegister={handleRegister} currentUser={currentUser}/>
           </Route>
-          <Route exact path="/register">
-          <Home handleRegister={handleRegister} currentUser={currentUser}/>
-        </Route>
         <Route exact path="/login">
           <Login handleLogin={handleLogin} />
           </Route>
@@ -114,10 +113,13 @@ function App() {
         <PostDetail software={software} />
       </Route>
       <Route  path='/post/:id' >
-        <Posts posts={posts} handlePostDelete={handlePostDelete} />
+        <Posts toggle={toggle} posts={posts} handlePostDelete={handlePostDelete} />
       </Route>
-      <Route path='/software'>
-        <Software software={software} />
+      <Route path='/more'>
+        <About />
+          </Route>
+          <Route path='/sign-out'>
+            <SignOut setCurrentUser={setCurrentUser} handleLogout={handleLogout}/>
       </Route>
         </Switch>
       </Layout>

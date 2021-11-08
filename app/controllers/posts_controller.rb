@@ -19,8 +19,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = @current_user
+    software_params[:softwares].each do |software|
+      current_software = Software.find_by_id(software)
+      @post.softwares.push(current_software)
+    end
     if @post.save
-      render json: @post, status: :created, location: @post
+      render json: @post, include: :softwares, status: :created
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -28,8 +32,13 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
+    @post.softwares = []
+    software_params[:softwares].each do |software|
+      current_software = Software.find_by_id(software)
+      @post.softwares.push(current_software)
+    end
     if @post.update(post_params)
-      render json: @post
+      render json: @post, include: :softwares
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -65,6 +74,11 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:name, :proposal, :user_id, :softwares)
+      params.require(:post).permit(:name, :proposal, :user_id)
+    end
+    def software_params
+      params.require(:post).permit(:softwares => [])
     end
 end
+
+

@@ -1,6 +1,5 @@
 import './Register.css'
 import { useState } from 'react';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 
@@ -11,9 +10,8 @@ export default function Register(props) {
     password: '',
   });
 
-  const history = useHistory()
   const { username, email, password } = formData;
-  const { handleRegister, currentUser } = props;
+  const { handleRegister } = props;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +23,7 @@ export default function Register(props) {
   
   
   return (
-    <div className='form-container'>
+    <div className='reg-form-container'>
     <form
         onSubmit={(e) => {
         e.preventDefault();
@@ -33,7 +31,6 @@ export default function Register(props) {
         
       }}
     >
-      {/* <h3>Register</h3> */}
       <label>
         Username:
         <input
